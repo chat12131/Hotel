@@ -41,3 +41,6 @@ yarn-debug.log*
 
 public/uploads/user/*
 !public/uploads/user/default_user.png
+app/assets/.DS_Store
+app/.DS_Store
+.DS_Store
