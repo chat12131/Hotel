@@ -40,7 +40,9 @@ yarn-debug.log*
 .yarn-integrity
 
 public/uploads/user/*
-!public/uploads/user/default_user.png
+!public/uploads/user/default_user.jpg
+public/uploads/rooms/*
+!public/uploads/room/default_room.jpg
 app/assets/.DS_Store
 app/.DS_Store
 .DS_Store
