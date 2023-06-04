@@ -3,7 +3,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <%= image_tag @user.image_name.url, size: '300x200' %>
+  <%= image_tag @user.image_name.url, size: '300x200' if @user.image_name? %>
 
   <div class="field">
    <%= f.label :image_name, "画像" %><br/>

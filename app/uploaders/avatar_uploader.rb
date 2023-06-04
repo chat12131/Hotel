@@ -13,8 +13,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/user"
   end
 
-  def default_url
-    'defult_user.png'
+  def default_url(*args)
+    "/uploads/user/default_user.jpg"
   end
 
   def extension_whitelist
