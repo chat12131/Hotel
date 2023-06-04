@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/",to:'homes#top'
+  resources :rooms
+  get 'myrooms',to:'rooms#myrooms'
+  get 'search',to:'rooms#search'
+  get '/',to:'homes#top'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
