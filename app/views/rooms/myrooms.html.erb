@@ -1,0 +1,11 @@
+<h2> 登録済み一覧</h2>
+<% @rooms.each do | room | %>
+  <%= image_tag room.image_name.url, size: "300x200" %>
+  <p> <%= link_to room.name,room_path(room)  %> </p>
+  <p> <%= room.details %> </p>
+  <p> <%= room.price %> </p>
+  <p> <%= room.address %> </p>
+  <p> <%= room.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %> </p>
+  <p> <%= link_to "編集", edit_room_path(room) %></p>
+  <p> <%= link_to "削除", room, method: :delete, data: { confirm: "本当に削除しますか?" } %></p>
+<% end %>

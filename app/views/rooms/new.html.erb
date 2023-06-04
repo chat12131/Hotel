@@ -1,0 +1,20 @@
+ <%= form_with model:@room do |f| %>
+
+   <%= f.label :name, "名前" %><br>
+   <%= f.text_field :name %><br>
+
+   <%= f.label :details, "詳細" %><br>
+   <%= f.text_field :details %><br>
+
+   <%= f.label :price, "料金" %><br>
+   <%= f.text_field :price %><br>
+
+   <%= f.label :address, "住所" %><br>
+   <%= f.text_field :address %><br>
+
+   <%= f.label :image_name, "画像" %><br>
+   <%= f.file_field :image_name %><br>
+
+   <%= f.submit "作成" %>
+
+ <% end %>

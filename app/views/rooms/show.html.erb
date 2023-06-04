@@ -1,0 +1,14 @@
+<%= image_tag @room.image_name.url , size: "400x300" %>
+<p> <%= @room.name %> </p>
+<p> <%= @room.details %> </p>
+<p> <%= @room.price %> </p>
+<p> <%= @room.address %> </p>
+
+<% if user_signed_in? && current_user.id == @room.user_id %>
+<p> <%= link_to "編集", edit_room_path(@room) %> </p>
+<p> <%= link_to "削除", @room, method: :delete, data: { confirm: "本当に削除しますか?" } %> </p>
+<% end %>
+
+<%= link_to "戻る", :back, onclick: "history.back(); return false;" %>
+
+
