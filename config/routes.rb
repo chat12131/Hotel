@@ -11,7 +11,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :rooms
+  resources :rooms do
+    resources :reservations do
+      post 'confirm', on: :collection
+    end
+  end
+
+  resources :reservations
+  get "myreservation", to: "reservations#myreservation", as: 'myreservation'
   get 'myrooms',to:'rooms#myrooms'
   get 'search',to:'rooms#search'
   get '/',to:'homes#top'
