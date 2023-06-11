@@ -1,0 +1,32 @@
+<div class="my-reservation">
+  <table>
+    <tr>
+      <th>画像</th>
+      <th>名前</th>
+      <th>住所</th>
+      <th class="reservation-details">詳細</th>
+      <th>料金</th>
+      <th>人数</th>
+      <th>日数</th>
+      <th>チェックイン</th>
+      <th>チェックアウト</th>
+      <th>確定日時</th>
+    </tr>
+    <% @reservations.each do | r | %>
+      <tr>
+        <td><%= image_tag r.room.image_name.url, size: "130x80" %></td>
+        <td><%= link_to r.room.name, room_path(r.room) %></td>
+        <td><%= r.room.address %></td>
+        <td class="reservation-details"><%= r.room.details %></td>
+        <td><%= r.price %>円</td>
+        <td><%= r.headcount %>人</td>
+        <td><%= (r.check_out - r.check_in).to_i %>日</td>
+        <td><%= r.check_in.in_time_zone('Tokyo').strftime('%Y/%m/%d') %></td>
+        <td><%= r.check_out.in_time_zone('Tokyo').strftime('%Y/%m/%d') %></td>
+        <td><%= r.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %></td>
+        <td><%= link_to "削除", r, method: :delete, data: { confirm: "本当に削除しますか?" }, class: "myreservation-d"%></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
