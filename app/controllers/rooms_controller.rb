@@ -26,6 +26,7 @@ class RoomsController < ApplicationController
         @room.image_name = "#{@room.id}.jpg"
         @room.save
       end
+      flash[:notice] = "作成しました"
       redirect_to "/"
     else
       render "new"
@@ -43,6 +44,7 @@ class RoomsController < ApplicationController
   def update
     @room = Room.find(params[:id])
     if @room.update(room_params)
+      flash[:notice] = "編集しました"
       redirect_to room_path(@room)
     else
       render "edit"
