@@ -1,20 +1,20 @@
 <div class="search-form">
   <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.label :address_keyword, '場所' %>
-    <%= f.text_field :address_keyword, value: @address_keyword %>
-    <%= f.label :details_keyword, 'キーワード' %>
-    <%= f.text_field :details_keyword, value: @details_keyword %>
+    <%= f.text_field :address_keyword, value: @address_keyword, placeholder: "場所"%>
+    <%= f.text_field :details_keyword, value: @details_keyword, placeholder: "キーワード" %>
     <%= f.submit "検索" %>
   <% end %>
 </div>
 
-<h3>検索結果 <%= @rooms.count %>件</h3>
-
-<% @rooms.each do | room | %>
-  <%= image_tag room.image_name.url, size: "300x200" %>
-  <p> <%= link_to room.name,room_path(room)  %> </p>
-  <p> <%= room.details %> </p>
-  <p> <%= room.price %> </p>
-  <p> <%= room.address %> </p>
-  <p> <%= room.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %> </p>
-<% end %>
+<h3 class="index-count">検索結果 <%= @rooms.count %>件</h3>
+<div class="index">
+  <% @rooms.each do | room | %>
+    <%= link_to room_path(room), class: "room-item" do %>
+     <%= image_tag room.image_name.url, size: "300x200" %>
+       <h3> <%= room.name %> </h3>
+       <p class="details"> <%= room.details %> </p>
+       <p> <%= room.price %> 円</p>
+       <p> <%= room.address %> </p>
+     <% end %>
+  <% end %>
+</div>

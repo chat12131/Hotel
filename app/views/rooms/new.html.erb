@@ -1,20 +1,11 @@
- <%= form_with model:@room do |f| %>
-
-   <%= f.label :name, "名前" %><br>
-   <%= f.text_field :name %><br>
-
-   <%= f.label :details, "詳細" %><br>
-   <%= f.text_field :details %><br>
-
-   <%= f.label :price, "料金" %><br>
-   <%= f.text_field :price %><br>
-
-   <%= f.label :address, "住所" %><br>
-   <%= f.text_field :address %><br>
-
-   <%= f.label :image_name, "画像" %><br>
-   <%= f.file_field :image_name %><br>
-
-   <%= f.submit "作成" %>
-
- <% end %>
+<div class="room-form">
+  <%= form_with model:@room do |f| %>
+    <%= f.text_field :name, placeholder: "名前" %><br>
+    <%= f.text_area :details, placeholder: "詳細" %><br>
+    <%= f.text_field :price, placeholder: "料金" %>
+    <%= f.text_field :address, placeholder: "住所" %><br>
+    <%= f.label :image_name, "画像 /"%>
+    <%= f.file_field :image_name%><br>
+    <%= f.submit "作成" %>
+  <% end %>
+ </div>

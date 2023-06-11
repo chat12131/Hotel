@@ -13,5 +13,5 @@ Turbolinks.start()
 ActiveStorage.start()
 
 require('jquery')
-import '../directory/dropdown';
+import '../directory/main';
 
