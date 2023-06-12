@@ -21,8 +21,8 @@
 <% if current_user %>
   <%= form_with(model: [ :confirm, @room, @room.reservations.build ], local: true, html: { class: 'reservation-form' }) do |f| %>
    <%= f.text_field :headcount,placeholder: "人数" %><br>
-   <%= f.text_field :check_in,placeholder: "チェックイン" %><br>
-   <%= f.text_field :check_out,placeholder: "チェックアウト" %><br>
+   <%= f.text_field :check_in,placeholder: "チェックイン 年/月/日" %><br>
+   <%= f.text_field :check_out,placeholder: "チェックアウト 年/月/日" %><br>
    <%= f.submit "予約する" %>
   <% end %>
 <% end %>
