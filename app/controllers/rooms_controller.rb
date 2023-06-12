@@ -29,6 +29,7 @@ class RoomsController < ApplicationController
       flash[:notice] = "作成しました"
       redirect_to "/"
     else
+      flash[:notice] = "入力エラーがあります"
       render "new"
     end
   end
@@ -47,6 +48,7 @@ class RoomsController < ApplicationController
       flash[:notice] = "編集しました"
       redirect_to room_path(@room)
     else
+      flash[:notice] = "入力エラーがあります"
       render "edit"
     end
   end
