@@ -12,7 +12,7 @@ class ReservationsController < ApplicationController
       session[:reservation_data] = reservation_params
       render :confirm
     else
-      redirect_to "/"
+      render "rooms/show"
       flash[:notice] = "入力エラーがあります"
     end
   end
@@ -24,7 +24,7 @@ class ReservationsController < ApplicationController
       redirect_to myreservation_path
       flash[:notice] = "作成しました"
     else
-      redirect_to "/"
+      render "rooms/show"
     end
   end
 
