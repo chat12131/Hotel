@@ -1,8 +1,23 @@
-$(document).ready(function() {
-  $(".dropdown-button").click(function(event) {
-    event.stopPropagation();
-    $(this).siblings(".dropdown-content").css("display", "block");
-  });
+$(function() {
+  $(".dropdown-button").hover(
+    function() {
+      var dropdownContent = $(this).siblings(".dropdown-content");
+      dropdownContent.css("display", "block");
+
+      dropdownContent.hover(
+        function() {
+          $(this).css("display", "block");
+        },
+        function() {
+          $(this).css("display", "none");
+        }
+      );
+    },
+    function() {
+      var dropdownContent = $(this).siblings(".dropdown-content");
+      dropdownContent.css("display", "none");
+    }
+  );
 
   $(document).click(function() {
     $(".dropdown-content").css("display", "none");
@@ -25,3 +40,4 @@ $(document).ready(function() {
       }
   });
 });
+
