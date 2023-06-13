@@ -8,12 +8,13 @@ class ReservationsController < ApplicationController
     @reservation = @room.reservations.build(reservation_params)
     @reservation.user_id = current_user.id
     if @reservation.valid?
+      flash.clear
       @reservation.price = @reservation.calculate_total_price
       session[:reservation_data] = reservation_params
       render :confirm
     else
-      render "rooms/show"
       flash[:notice] = "入力エラーがあります"
+      render "rooms/show"
     end
   end
 
