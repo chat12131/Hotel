@@ -7,6 +7,9 @@ class Room < ApplicationRecord
   validates :price, presence: true
   validates :address, presence: true
 
+  validates :price, numericality: { greater_than_or_equal_to: 1 }
+
+
   mount_uploader :image_name, RoomImageUploader
 
   def self.search(address_keyword, details_keyword)
