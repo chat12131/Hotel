@@ -6,11 +6,48 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
 
   <body>
+    <header>
+      <div class="header-text">
+        <div class="header-left">
+          <h2><%= link_to "HOTEL","/" %></h2>
+        </div>
+        <div class="header-right">
+          <% if current_user %>
+            <%= image_tag current_user.image_name.url, size: '50x50', style: 'border-radius: 50%;' %>
+              <div class="dropdown">
+               <p class="dropdown-button"><%= current_user.name %>
+               <span><i class="fa fa-sort-desc u-ml5"></i></span>
+               <ul class="dropdown-content">
+                <li><%= link_to "新規登録",:new_room %></li>
+                <li><%= link_to "登録ルーム",myrooms_path %></li>
+                 <li><%= link_to "予約一覧",myreservation_path %></li>
+                <li><%= link_to "アカウント", user_account_path %></li>
+                <li><%= link_to "プロフィール", user_profile_path %></li>
+               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+             </ul>
+            </p>
+          </div>
+          <% else %>
+            <p><%= link_to "ログイン",new_user_session_path %></p>
+            <p class="out"><%= link_to "新規登録",new_user_registration_path %></p>
+          <% end %>
+        </div>
+      </div>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <div class="main">
+      <div class="main-contents">
     <%= yield %>
+      </div>
+    <div class="main">
+ <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
-</html>
+  </html>
+

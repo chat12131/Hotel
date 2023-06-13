@@ -1,0 +1,12 @@
+<div class="profile">
+  <p class="profile-edit">
+    <%= link_to "編集", user_profile_edit_path %>
+  </p>
+  <h2>プロフィール</h2>
+  <%= image_tag current_user.image_name.url, size: '250x200' %>
+  <h3>名前</h3>
+  <p><%= current_user.name %></p>
+  <h3>自己紹介</h3>
+  <p class="bio"><%= current_user.bio %></p>
+</div>
+

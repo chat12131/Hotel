@@ -1,0 +1,26 @@
+<div class="confirm-contents">
+  <div class="room-contents">
+    <div class="room-image">
+    <%= image_tag @reservation.room.image_name.url , size: "400x300" %>
+    </div>
+    <div class="room-text"">
+      <h1><%= @reservation.room.name %></h1><br>
+      <p><%= (@reservation.check_out - @reservation.check_in).to_i %>日</p>
+      <p><%= @reservation.headcount %>人</p>
+      <p><%= @reservation.price %>円</p><br>
+      <%= @reservation.check_in %>〜
+      <%= @reservation.check_out %>
+
+      <%= form_with(url: reservations_path, method: :post, local: true) do |f| %>
+       <%= hidden_field_tag 'reservation[check_in]', @reservation.check_in %>
+       <%= hidden_field_tag 'reservation[check_out]', @reservation.check_out %>
+       <%= hidden_field_tag 'reservation[headcount]', @reservation.headcount %>
+       <%= hidden_field_tag 'reservation[user_id]', @reservation.user_id %>
+       <%= hidden_field_tag 'reservation[room_id]', @reservation.room_id %>
+       <%= hidden_field_tag 'reservation[price]', @reservation.price %>
+       <%= f.submit "予約",class: "confirm-submit" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

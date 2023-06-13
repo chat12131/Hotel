@@ -1,0 +1,15 @@
+<div class="search-form">
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :address_keyword, value: @address_keyword, placeholder: "場所"%>
+    <%= f.text_field :details_keyword, value: @details_keyword, placeholder: "キーワード" %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
+<div class="area" >
+  <p><%= link_to "東京", search_path(address_keyword: "東京") %></p>
+  <p><%= link_to "大阪", search_path(address_keyword: "大阪") %></p>
+  <p><%= link_to "京都", search_path(address_keyword: "京都") %></p>
+  <p><%= link_to "札幌", search_path(address_keyword: "札幌") %></p>
+</div>
+
+

@@ -1,0 +1,40 @@
+<div class="show-top">
+  <p><%= link_to "⬅︎戻る", :back, onclick: "history.back(); return false;",class: "back" %></p>
+  <% if user_signed_in? && current_user.id == @room.user_id %>
+    <div class="show-edit">
+      <p> <%= link_to "編集", edit_room_path(@room) %> </p>
+      <p> <%= link_to "削除", @room, method: :delete, data: { confirm: "本当に削除しますか?" } %> </p>
+    </div>
+  <% end %>
+</div>
+<div class="room-contents">
+  <div class="room-image">
+    <%= image_tag @room.image_name.url , size: "400x300" %>
+  </div>
+  <div class="room-text">
+    <h1> <%= @room.name %> </h1><br>
+    <p class="details"> <%= @room.details %> </p>
+    <p> <%= @room.price %> 円</p>
+    <p> <%= @room.address %> </p>
+  </div>
+</div>
+<% if current_user %>
+  <%= form_with(model: [ :confirm, @room, @room.reservations.build ], local: true, html: { class: 'reservation-form' }) do |f| %>
+    <div class="form-field">
+      <%= f.label :headcount, "人数" %>
+      <%= f.text_field :headcount, placeholder: "1以上" %>
+    </div>
+    <div class="form-field">
+      <%= f.label :check_in, "チェックイン" %>
+      <%= f.date_field :check_in %>
+    </div>
+    <div class="form-field">
+      <%= f.label :check_out, "チェックアウト" %>
+      <%= f.date_field :check_out %>
+    </div>
+    <%= f.submit "予約する", class: "reservation-btn" %>
+  <% end %>
+<% end %>
+
+
+
