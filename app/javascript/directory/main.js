@@ -1,26 +1,12 @@
-$(function() {
-  $(".dropdown-button").hover(
-    function() {
-      var dropdownContent = $(this).siblings(".dropdown-content");
-      dropdownContent.css("display", "block");
+$(document).on('turbolinks:load', function() {
+  $(document).on('mouseenter', '.dropdown-button', function() {
+    var dropdownContent = $(this).find(".dropdown-content");
+    dropdownContent.css("display", "block");
+  });
 
-      dropdownContent.hover(
-        function() {
-          $(this).css("display", "block");
-        },
-        function() {
-          $(this).css("display", "none");
-        }
-      );
-    },
-    function() {
-      var dropdownContent = $(this).siblings(".dropdown-content");
-      dropdownContent.css("display", "none");
-    }
-  );
-
-  $(document).click(function() {
-    $(".dropdown-content").css("display", "none");
+  $(document).on('mouseleave', '.dropdown-button', function() {
+    var dropdownContent = $(this).find(".dropdown-content");
+    dropdownContent.css("display", "none");
   });
 });
 
@@ -40,4 +26,6 @@ $(document).ready(function() {
       }
   });
 });
+
+
 

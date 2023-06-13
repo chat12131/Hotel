@@ -21,17 +21,19 @@
         <div class="header-right">
           <% if current_user %>
             <%= image_tag current_user.image_name.url, size: '50x50', style: 'border-radius: 50%;' %>
-            <div class="dropdown">
-              <p class="dropdown-button"><%= current_user.name %><span><i class="fa fa-sort-desc u-ml5"></i></span></p>
-                <ul class="dropdown-content">
-                  <li><%= link_to "新規登録",:new_room %></li>
-                  <li><%= link_to "登録ルーム",myrooms_path %></li>
-                  <li><%= link_to "予約一覧",myreservation_path %></li>
-                  <li><%= link_to "アカウント", user_account_path %></li>
-                  <li><%= link_to "プロフィール", user_profile_path %></li>
-                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-                </ul>
-            </div>
+              <div class="dropdown">
+               <p class="dropdown-button"><%= current_user.name %>
+               <span><i class="fa fa-sort-desc u-ml5"></i></span>
+               <ul class="dropdown-content">
+                <li><%= link_to "新規登録",:new_room %></li>
+                <li><%= link_to "登録ルーム",myrooms_path %></li>
+                 <li><%= link_to "予約一覧",myreservation_path %></li>
+                <li><%= link_to "アカウント", user_account_path %></li>
+                <li><%= link_to "プロフィール", user_profile_path %></li>
+               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+             </ul>
+            </p>
+          </div>
           <% else %>
             <p><%= link_to "ログイン",new_user_session_path %></p>
             <p class="out"><%= link_to "新規登録",new_user_registration_path %></p>
@@ -48,3 +50,4 @@
  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
   </html>
+
